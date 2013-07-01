@@ -12,9 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require twitter/bootstrap
 //= require turbolinks
 //= require angular
+//= require angular-resource
 //= require_tree .
-
-$(document).foundation();
