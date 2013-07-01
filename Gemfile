@@ -34,3 +34,9 @@ end
 
 gem 'zurb-foundation', '~> 4.0.0'
 
+group :test, :development do
+  gem 'rspec-rails'
+end
+
+gem 'simple_form'
+gem 'angularjs-rails'

@@ -3,28 +3,86 @@
 <!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
-  <head>
-  	<meta charset="utf-8" />
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"  ng-app="bma1"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
 
-  	<!-- Uncomment to make IE8 render like IE7 -->
-  	<!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+  <!-- Uncomment to make IE8 render like IE7 -->
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
 
-  	<!-- Set the viewport width to device width for mobile -->
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Center for Technology and Systems Management" %></title>
 
-  	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/custom.modernizr" %>
+  <%= csrf_meta_tags %>
+    <%= javascript_include_tag "application" %>
 
-  <body>
+</head>
+
+<body>
+
+  <!-- Header and Nav -->
+
+  <div class="row">
+    <div class="large-3 columns">
+      <h1><img src="http://ctsm.umd.edu/images/ctsm/ctsm_nav_logo.jpg" /></h1>
+    </div>
+    <div class="large-9 columns">
+      <!-- <ul class="inline-list right"> -->
+      <!-- </ul> -->
+    </div>
+  </div>
+
+  <!-- End Header and Nav -->
+
+  <div class="row"> <!-- main row -->
 
     <%= yield %>
 
-    
-    <%= javascript_include_tag "application" %>
-  </body>
+    <!-- Nav Sidebar -->
+    <!-- This is source ordered to be pulled to the left on larger screens -->
+    <div class="large-3 pull-9 columns">
+
+      <ul class="side-nav">
+        <li><a href="#">CTSM Home</a></li>
+        <li><a href="#">About CTSM</a></li>
+        <li><a href="#">Personnel</a></li>
+        <li><a href="#">Section 4</a></li>
+        <li><a href="#">Section 5</a></li>
+        <li><a href="#">Section 6</a></li>
+      </ul>
+
+    <div data-ng-controller="FeedCtrl" class="news">
+      <h5>Engineering News</h5>
+          <p ng-repeat="feed in feeds | limitTo:3">
+            <a href="{{feed.link}}">{{feed.title}}</a>
+          </p>
+    </div>
+
+  </div> <!-- end column -->
+</div> <!-- main row -->
+
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr />
+      <div class="row">
+        <div class="large-6 columns">
+          <p>&copy; Copyright no one at all. Go to town.</p>
+        </div>
+        <div class="large-6 columns">
+          <ul class="inline-list right">
+            <li><a href="#">Section 1</a></li>
+            <li><a href="#">Section 2</a></li>
+            <li><a href="#">Section 3</a></li>
+            <li><a href="#">Section 4</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
 </html>

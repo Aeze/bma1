@@ -1,0 +1,23 @@
+<div class="large-9 push-3 columns">
+
+  <% @aboutpages.each do |a| %>
+  <h3><%= a.title %></h3>
+  <p><%= simple_format(a.content, html_options={}, options={}) %></p>
+
+  <%= simple_form_for a do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit %>
+  <% end %>
+  <% end %>
+
+  <h3>Create new About Page </h3>
+
+  <%= simple_form_for Aboutpage.new do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit %>
+  <% end %>
+
+
+</div>
