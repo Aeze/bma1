@@ -11,11 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130701010524) do
+ActiveRecord::Schema.define(version: 20130706233847) do
 
   create_table "aboutpages", force: true do |t|
     t.string   "title"
     t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "personnels", force: true do |t|
+    t.string   "personneltype"
+    t.string   "name"
+    t.string   "picture"
+    t.string   "title"
+    t.string   "email"
+    t.string   "phone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "publications", force: true do |t|
+    t.string   "pdf"
+    t.text     "citation"
+    t.string   "pubtype"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
