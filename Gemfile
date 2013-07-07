@@ -40,3 +40,7 @@ gem 'simple_form'
 gem 'angularjs-rails'
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'carrierwave'
+gem 'fog'
+gem 'rmagick'
+gem "mini_magick"

@@ -1,0 +1,48 @@
+<div ng-controller="PersonnelCtrl">
+	<div class='row-fluid'>
+	<button ng-click='addNew = true'>Add New Personnel</button>
+	<!--<div ng-show='addNew'>
+		<form ng-submit="saveNew()">
+			Name: <input type="text" ng-model="newPerson.name" /><br />
+	        E-mail: <input type="email" ng-model="newPerson.email" /><br />
+	        Category: <input type="text" ng-model="newPerson.personneltype" /><br />
+	        Official Title: <input type="text" ng-model="newPerson.title" /><br />
+	        Phone: <input type="text" ng-model="newPerson.phone" /><br />
+	        Picture: <input type="text" ng-model="newPerson.picture" /><br />
+	        <button ng-click="reset()">RESET</button>
+	        <input button class="button" type="submit" value="Save">
+		</form>
+	</div>-->
+	<div ng-show='addNew'>
+		<div class='span3'>
+	 <%= simple_form_for Personnel.new do |f| %>
+      <%= f.input :name  %>
+     <%= f.input :email %>
+     <%= f.input :personneltype, collection: [
+      'Director',
+      'Associate',
+      'Graduate',
+      'Undergraduate'], selected: 'Director' %>
+  </div>
+  <div class='span3'>
+     <%= f.input :title %>
+     <%= f.input :phone %>
+     <div id="photo_attachment_container">
+          <label>Choose a picture</label>
+      <div class="wrapper">
+        <%= f.file_field :picture %>
+      </div>
+      <%= f.submit 'Save New Personnel', class: 'btn btn-primary btn-large' %>
+    </div>
+    <% end %>
+</div>
+<div class='span6'></div>
+</div>
+	</div>
+	<div ng-repeat='title in types'>
+		<h4>{{title}}</h4><br />
+		<div ng-repeat='personnel in personnels'>
+			<div ng-model='personnel' types='title' personnel type="personnel.personneltype"></div>
+		</div>
+	</div>
+</div>

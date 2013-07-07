@@ -1,0 +1,15 @@
+
+   <%= simple_form_for Publication.new do |f| %>
+      <%= f.input :citation  %>
+     <%= f.input :pubtype, collection: [
+      'Conference',
+      'Journal',
+      'Textbook'], selected: 'Journal' %>
+     <div id="photo_attachment_container">
+          <label>Choose a pdf</label>
+      <div class="wrapper">
+        <%= f.file_field :pdf %>
+      </div>
+      <%= f.submit 'Save New Publication', class: 'btn btn-primary btn-large' %>
+    </div>
+    <% end %>
