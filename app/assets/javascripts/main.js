@@ -42,6 +42,25 @@ var PersonnelCtrl = function($scope, Personnel) {
     console.log($scope.newPerson);
     $scope.newPerson = {};
   };
+  $scope.delete = function(num) {
+    Personnel.delete($scope.personnels[num]);
+    $scope.personnels = Personnel.query();
+  };
+  $scope.open = function () {
+    $scope.shouldBeOpen = true;
+  };
+
+  $scope.close = function () {
+    $scope.closeMsg = 'I was closed at: ' + new Date();
+    $scope.shouldBeOpen = false;
+  };
+
+  $scope.items = ['item1', 'item2'];
+
+  $scope.opts = {
+    backdropFade: true,
+    dialogFade:true
+  };
 };
 
 var PublicationCtrl = function($scope, Publication) {
@@ -63,10 +82,15 @@ app.directive('personnel', function() {
     scope: {
       model: '=ngModel',
       type: '=type',
-      types: '=types'
+      types: '=types',
+      index: '=index',
+      delete: '&destroy'
     },
-    template: "<div ng-show='rightType'><img ng-src='{{model.picture.picture.thumb.url}}'><div>{{model.name}}</div><div>{{model.title}}</div><div>{{model.phone}}</div><div>{{model.email}}</div></div>",
-    link: function(scope, element, attrs, $scope) {
+    template: "<div ng-show='rightType'><img ng-src='{{model.picture.picture.thumb.url}}'><div>{{model.name}}</div>" +
+    "<div>{{model.title}}</div><div>{{model.phone}}</div><div>{{model.email}}</div>" +
+    "<a href='#person{{model.id}}' role='button' class='btn' data-toggle='modal'>Update {{model.name}}'s Information</a>" +
+    "<button ng-click='delete(index)'>Delete</button></div>",
+    link: function(scope, element, attrs) {
       scope.rightType = false;
       scope.type === scope.types ? scope.rightType = true : scope.rightType = false;
     }

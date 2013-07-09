@@ -16,6 +16,12 @@ class PersonnelsController < ApplicationController
     redirect_to personnels_path
   end
 
+  def destroy
+    @personnel = Personnel.find(params[:id])
+    @personnel.destroy
+    redirect_to personnels_path
+  end
+
 
   def personnel_params
     params.require(:personnel).permit(:title, :email, :phone, :picture, :name, :personneltype)

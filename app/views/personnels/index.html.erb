@@ -1,18 +1,6 @@
 <div ng-controller="PersonnelCtrl">
 	<div class='row-fluid'>
 	<button ng-click='addNew = true'>Add New Personnel</button>
-	<!--<div ng-show='addNew'>
-		<form ng-submit="saveNew()">
-			Name: <input type="text" ng-model="newPerson.name" /><br />
-	        E-mail: <input type="email" ng-model="newPerson.email" /><br />
-	        Category: <input type="text" ng-model="newPerson.personneltype" /><br />
-	        Official Title: <input type="text" ng-model="newPerson.title" /><br />
-	        Phone: <input type="text" ng-model="newPerson.phone" /><br />
-	        Picture: <input type="text" ng-model="newPerson.picture" /><br />
-	        <button ng-click="reset()">RESET</button>
-	        <input button class="button" type="submit" value="Save">
-		</form>
-	</div>-->
 	<div ng-show='addNew'>
 		<div class='span3'>
 	 <%= simple_form_for Personnel.new do |f| %>
@@ -42,7 +30,39 @@
 	<div ng-repeat='title in types'>
 		<h4>{{title}}</h4><br />
 		<div ng-repeat='personnel in personnels'>
-			<div ng-model='personnel' types='title' personnel type="personnel.personneltype"></div>
+			<div ng-model='personnel' destroy='delete($index)' types='title' personnel ng-transclude type="personnel.personneltype">
+      </div>
 		</div>
 	</div>
 </div>
+<% @personnels.each do |f| %>
+<div id="<%= "person" + f.id.to_s %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+<%= simple_form_for f do |p| %>
+  <%= p.input :name %>
+  <%= p.input :email %>
+  <%= p.input :personneltype, collection: [
+    'Director',
+    'Associate',
+    'Graduate',
+    'Undergraduate'], selected: 'Director' %>
+  <%= p.input :title %>
+  <%= p.input :phone %>
+  <div id="photo_attachment_container">
+    <label>Choose a picture</label>
+  <div class="wrapper">
+  <%= p.file_field :picture %>
+  </div>
+  </div>
+  <%= p.submit 'Update Personnel', class: 'btn btn-primary btn-large' %>
+<% end %>
+</div>
+<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
+<% end %>
