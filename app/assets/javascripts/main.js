@@ -22,9 +22,14 @@ app.factory('Personnel', function($resource) {
   return $resource("/personnels/:id", {id: "@id"}, {update: {method: "PUT"}});
 });
 
+app.factory('Publication', function($resource) {
+  return $resource("/publications/:id", {id: "@id"}, {update: {method: "PUT"}});
+});
+
 app.controller("FeedCtrl", ['$scope', 'Feed', function ($scope, Feed) {
     Feed.parseFeed('http://feed.eng.umd.edu/news/feed.xml').then(function (res) {
         $scope.feeds = res.data.responseData.feed.entries;
+        console.log($scope.feeds);
     });
 }]);
 
@@ -37,6 +42,13 @@ var PersonnelCtrl = function($scope, Personnel) {
     console.log($scope.newPerson);
     $scope.newPerson = {};
   };
+};
+
+var PublicationCtrl = function($scope, Publication) {
+  $scope.publications = Publication.query(function(){
+    console.log($scope.publications);
+  });
+  $scope.pubs = ['Journal', 'Conference', 'Technical Report', 'Text Book'];
 };
 
 var AboutPagesCtrl = function ($scope, AboutPages) {
@@ -66,4 +78,21 @@ app.directive('personnel', function() {
       scope.type === scope.types ? scope.rightType = true : scope.rightType = false;
     }
   }
-})
+});
+
+app.directive('publication', function() {
+  return {
+    restrict: 'A',
+    transclude: 'true',
+    scope: {
+      model: '=ngModel',
+      type: '=type',
+      types: '=types'
+    },
+    template: "<div ng-show='rightType'><div>{{model.citation}}<a href='{{model.pdf.pdf.url}}'>PDF</a></div></div>",
+    link: function(scope, element, attrs) {
+      scope.rightType = false;
+      scope.type === scope.types ? scope.rightType = true : scope.rightType = false;
+    }
+  }
+});

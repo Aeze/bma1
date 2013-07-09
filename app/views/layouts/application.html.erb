@@ -38,20 +38,20 @@
 
     <div class="container-fluid">
     <div class="row-fluid">
-    <br />
-    <%= image_tag('ctsm_logo.jpg') %>
+    <div class="span2"><%= image_tag('ctsm_logo.jpg') %></div>
+    <div class="span10"><h3>Center for Technology and Systems Management <small>Technology for Intelligent Decisions</small></h3></div>
     <hr>
     </div>
+    <br />
       <div class="row-fluid">
         <div class="span2">
           <div class="sidebar-nav">
             <ul class="nav nav-list">
-              <li class="nav-header">Navigation</li>
-              <li><%= link_to "Home", "/path1"  %></li>
+              <li><%= link_to "Home", root_path  %></li>
               <li><%= link_to "About", "/path2"  %></li>
-              <li><%= link_to "People", "/path3"  %></li>
+              <li><%= link_to "People", "/personnels"  %></li>
               <li><%= link_to "Research", "/path3"  %></li>
-              <li><%= link_to "Publications", "/path3"  %></li>
+              <li><%= link_to "Publications", "/publications"  %></li>
               <li><%= link_to "Teaching", "/path3"  %></li>
               <li><%= link_to "News & Events", "/path3"  %></li>
               <li><%= link_to "Contact & Directions", '/pages/contact'  %></li>

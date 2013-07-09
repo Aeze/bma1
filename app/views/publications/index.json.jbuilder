@@ -1,3 +1,3 @@
 json.array!(@publications) do |pub|
-  json.extract! per, :citation, :pdf, :pubtype, :id
+  json.extract! pub, :citation, :pdf, :pubtype, :id
 end

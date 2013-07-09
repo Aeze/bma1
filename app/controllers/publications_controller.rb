@@ -18,6 +18,6 @@ class PublicationsController < ApplicationController
 
 
   def publication_params
-    params.require(:publication).permit(:content, :pdf, :pubtype)
+    params.require(:publication).permit(:citation, :pdf, :pubtype)
   end
 end

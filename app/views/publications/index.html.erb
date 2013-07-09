@@ -1,10 +1,16 @@
+<style type="text/css">
+  .pointer{
+    cursor: pointer;
+  }
+</style>
 
    <%= simple_form_for Publication.new do |f| %>
-      <%= f.input :citation  %>
+     <%= f.input :citation %>
      <%= f.input :pubtype, collection: [
       'Conference',
       'Journal',
-      'Textbook'], selected: 'Journal' %>
+      'Textbook',
+      'Technical Report'], selected: 'Journal' %>
      <div id="photo_attachment_container">
           <label>Choose a pdf</label>
       <div class="wrapper">
@@ -13,3 +19,12 @@
       <%= f.submit 'Save New Publication', class: 'btn btn-primary btn-large' %>
     </div>
     <% end %>
+ <div ng-controller="PublicationCtrl">
+  <tabset>
+    <tab class='pointer' ng-repeat='pub in pubs' heading='{{pub}}'>
+      <div ng-repeat='publication in publications'>
+        <div ng-model='publication' types='pub' publication type='publication.pubtype'></div>
+      </div>
+    </tab>
+  </tabset>
+</div>
