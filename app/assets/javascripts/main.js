@@ -51,16 +51,9 @@ var PublicationCtrl = function($scope, Publication) {
   $scope.pubs = ['Journal', 'Conference', 'Technical Report', 'Text Book'];
 };
 
-var AboutPagesCtrl = function ($scope, AboutPages) {
-  $scope.tabs = AboutPages.query();
+var AboutCtrl = function ($scope, AboutPages) {
+  $scope.tabs = ['omar', 'marcus'];
 
-  $scope.alertMe = function() {
-    setTimeout(function() {
-      alert("You've selected the alert tab!");
-    });
-  };
-
-  $scope.navType = 'pills';
 };
 
 app.directive('personnel', function() {

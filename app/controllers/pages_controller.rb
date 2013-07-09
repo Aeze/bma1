@@ -5,4 +5,12 @@ class PagesController < ApplicationController
   def contact
   end
 
+  def about
+  end
+
+  def risk
+  end
+
+  def reliability
+  end
 end
