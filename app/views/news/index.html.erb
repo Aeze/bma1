@@ -1,0 +1,18 @@
+<div ng-controller='NewsCtrl'>
+  <button ng-click='addNews = true'>Add News</button>
+  <form ng-show='addNews' ng-submit='addNew()'>
+    <div>News Title</div>
+    <input type='text' ng-model='newNews.title' />
+    <div>News Description</div>
+    <textarea ng-model='newNews.content'></textarea>
+    <div>Url to News Webpage</div>
+    <input type='text' ng-model='newNews.link' /><br />
+    <input type='submit' value='Submit News' />
+  </form>
+  <div ng-repeat='new in news'>
+    <h4>{{new.title}}</h4>
+    <p>{{new.content}}</p>
+    <a href='{{new.link}}'>URL</a>
+    <hr>
+  </div>
+</div>

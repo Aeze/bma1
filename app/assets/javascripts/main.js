@@ -22,6 +22,14 @@ app.factory('Personnel', function($resource) {
   return $resource("/personnels/:id", {id: "@id"}, {update: {method: "PUT"}});
 });
 
+app.factory('Course', function($resource) {
+  return $resource("/courses/:id", {id: "@id"}, {update: {method: "PUT"}});
+});
+
+app.factory('News', function($resource) {
+  return $resource("/news/:id", {id: "@id"}, {update: {method: "PUT"}});
+});
+
 app.factory('Publication', function($resource) {
   return $resource("/publications/:id", {id: "@id"}, {update: {method: "PUT"}});
 });
@@ -61,6 +69,24 @@ var PersonnelCtrl = function($scope, Personnel) {
     backdropFade: true,
     dialogFade:true
   };
+};
+
+var CourseCtrl = function($scope, Course) {
+  $scope.courses = Course.query();
+  $scope.addNew = function(){
+    var course = Course.save($scope.newCourse)
+    $scope.courses.push($scope.newCourse);
+    $scope.newCourse = {};
+  }
+};
+
+var NewsCtrl = function($scope, News) {
+  $scope.news = News.query();
+  $scope.addNew = function(){
+    var news = News.save($scope.newNews);
+    $scope.news.push($scope.newNews);
+    $scope.newNews = {};
+  }
 };
 
 var PublicationCtrl = function($scope, Publication) {

@@ -1,5 +1,9 @@
 Ctsm::Application.routes.draw do
 
+  resources :news
+
+  resources :courses
+
   root 'pages#home'
 
     resources "aboutpages"
@@ -7,6 +11,10 @@ Ctsm::Application.routes.draw do
     resources :personnels
 
     resources :publications
+
+    resources :courses
+
+    resources :news
 
     get 'pages/contact'
     get 'pages/about'
