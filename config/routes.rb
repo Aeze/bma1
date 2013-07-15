@@ -1,5 +1,6 @@
 Ctsm::Application.routes.draw do
 
+  devise_for :admins
   resources :news
 
   resources :courses

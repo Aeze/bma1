@@ -1,4 +1,5 @@
 <div ng-controller="PersonnelCtrl">
+  <% if admin_signed_in? %>
 	<div class='row-fluid'>
 	<button ng-click='addNew = true'>Add New Personnel</button>
 	<div ng-show='addNew'>
@@ -27,6 +28,7 @@
 <div class='span6'></div>
 </div>
 	</div>
+  <% end %>
 	<div ng-repeat='title in types'>
 		<h4>{{title}}</h4><br />
 		<div ng-repeat='personnel in personnels'>

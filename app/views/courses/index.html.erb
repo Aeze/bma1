@@ -1,4 +1,5 @@
 <div ng-controller='CourseCtrl'>
+<% if admin_signed_in? %>
   <button ng-click='addCourse = true'>Add New Course</button>
   <form ng-show='addCourse' ng-submit='addNew()'>
     <div>Course Title</div>
@@ -9,6 +10,7 @@
     <input type='text' ng-model='newCourse.link' /><br />
     <input type='submit' value='Submit New Course' />
   </form>
+  <% end %>
   <div ng-repeat='course in courses'>
     <h4>{{course.title}}</h4>
     <p>{{course.content}}</p>

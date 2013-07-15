@@ -43,4 +43,5 @@ gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootst
 gem 'carrierwave'
 gem 'fog'
 gem 'rmagick'
-gem "mini_magick"
+gem 'mini_magick'
+gem 'devise', '~> 3.0'
